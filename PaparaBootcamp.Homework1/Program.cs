@@ -23,12 +23,10 @@ namespace PaparaBootcamp.Homework1
             TakeExample(products);
             TopThreeHighValues(products);
             TopHighStock(products);
+            PriceInRange(products);
+            SumExample(products);
+            AverageExample(customers);
         }
-
-
-        
-
-
 
 
         #region from ve select
@@ -217,18 +215,55 @@ namespace PaparaBootcamp.Homework1
         }
         #endregion
 
-        #region First Example
+        #region FirstOrDefault Example
         //First Example
         //bu sorguda stokta en çok olan ürünü bulmaya çalıştım
         private static void TopHighStock(List<Product> products)
         {
+            Console.WriteLine("First Example : ");
             var TopHighStock = (from product in products
                                 orderby product.Stock descending
                                 select product).FirstOrDefault();
             Console.WriteLine($"Product Name : {TopHighStock!.Name}, Product Stock : {TopHighStock!.Stock}");
+            Console.WriteLine("---------------------------------------------------");
         }
         #endregion
 
+        #region In range
+        //Fiyatı 10 ile 50 arasındaki ürünler
+        private static void PriceInRange(List<Product> products)
+        {
+            Console.WriteLine("Fiyatı 10 ile 50 arasındaki ürünler : ");
+            var priceInRange = products.Where(product => product.Price >= 10 && product.Price <= 50);
+            foreach (var product in priceInRange)
+            {
+                Console.WriteLine($"Product Name : {product.Name}, Product Price : {product.Price}");
+            }
+            Console.WriteLine("---------------------------------------------------");
+        }
+        #endregion
+
+        #region Sum Example
+        //Id si 2 olan müşterinin yaptığı alışverişlerin toplam fiyatı
+        private static void SumExample(List<Product> products)
+        {
+            Console.WriteLine("Id si 2 olan müşterinin yaptığı alışverişlerin toplam fiyatı : ");
+            var sumPrice = products.Where(p => p.CustomerId == 2).Sum(p => p.Price);
+            Console.WriteLine(sumPrice);
+            Console.WriteLine("---------------------------------------------------");
+        }
+        #endregion
+
+        #region Average Example
+        private static void AverageExample(List<Customer> customers)
+        {
+            //Müşterilerin yas ortalaması
+            Console.WriteLine("Musterilerin yas ortalaması");
+            var averageCustomerAge = customers.Average(customer => customer.Age);
+            Console.WriteLine(averageCustomerAge);
+            Console.WriteLine("---------------------------------------------------");
+        }
+        #endregion
 
 
 
