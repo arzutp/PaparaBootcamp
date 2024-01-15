@@ -8,13 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Users\DTOs\" />
-    <Folder Include="Models\Users\UserController\" />
-    <Folder Include="Models\Users\UserRepository\" />
   </ItemGroup>
 
 </Project>
