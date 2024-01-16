@@ -38,7 +38,7 @@ namespace PaparaBootcamp.Homework2.Models.Users.UserRepositories
 
         public List<User> GetByName(string name)
         {
-            return _users.Where(u=>u.Name == name).ToList();
+            return _users.Where(u=>u.Name.ToUpper() == name.ToUpper()).ToList();  //küçük harf girdiğinde de arama yapabilmesi için bu şekilde ToUpper kullandım. 
         }
 
         public void Update(User user)
