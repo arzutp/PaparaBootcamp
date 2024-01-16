@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PaparaBootcamp.Homework2.Models.Users.DTOs
+﻿namespace PaparaBootcamp.Homework2.Models.Users.DTOs
 {
-    public class UserDto
+    public class BaseUserResultDto
     {
         public int Id { get; set; }
 
@@ -13,6 +11,5 @@ namespace PaparaBootcamp.Homework2.Models.Users.DTOs
         public string Email { get; set; } = null!;
 
         public int Age { get; set; }
-
     }
 }

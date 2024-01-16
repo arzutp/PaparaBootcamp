@@ -7,7 +7,7 @@ namespace PaparaBootcamp.Homework2.Mapping
     public class DtoProfile : Profile
     {
         public DtoProfile() { 
-            CreateMap<User, UserDto>();
+            CreateMap<User, UserGetAllDto>();
             CreateMap<User, UserGetByIdDto>();
             CreateMap<User, UserGetByAgeDto>();
             CreateMap<User, UserGetByNameDto>().ReverseMap();

@@ -5,7 +5,7 @@ namespace PaparaBootcamp.Homework2.Models.Users.UserServices
 {
     public interface IUserService
     {
-        List<UserDto> GetAll();
+        List<UserGetAllDto> GetAll();
         void Delete(int id);
         ResponseDto<int> Add(UserAddDtoRequest request);
         void Update(UserUpdateDtoRequest request);

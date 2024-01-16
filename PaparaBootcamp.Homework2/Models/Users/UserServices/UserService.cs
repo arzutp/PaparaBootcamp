@@ -40,11 +40,11 @@ namespace PaparaBootcamp.Homework2.Models.Users.UserServices
             _userRepository.Delete(id);
         }
 
-        public List<UserDto> GetAll()
+        public List<UserGetAllDto> GetAll()
         {
             List<User> users = _userRepository.GetAll();
 
-            List<UserDto> userDtos = _mapper.Map<List<UserDto>>(users);
+            List<UserGetAllDto> userDtos = _mapper.Map<List<UserGetAllDto>>(users);
             return userDtos;
         }
 
