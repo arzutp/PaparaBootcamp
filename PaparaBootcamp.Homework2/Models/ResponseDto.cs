@@ -13,6 +13,7 @@
             };
         }
 
+
         public static ResponseDto<T> Fail(List<string> errors)
         {
             return new ResponseDto<T>

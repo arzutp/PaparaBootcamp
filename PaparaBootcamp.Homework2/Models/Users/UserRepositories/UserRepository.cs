@@ -25,10 +25,20 @@ namespace PaparaBootcamp.Homework2.Models.Users.UserRepositories
             return _users;
         }
 
+        public List<User> GetByAge(int age)
+        {
+            return _users.Where(u => u.Age == age).ToList();
+        }
+
         public User GetById(int id)
         {
             User userGetById = _users.Where(user => user.Id == id).FirstOrDefault()!;
             return userGetById;
+        }
+
+        public List<User> GetByName(string name)
+        {
+            return _users.Where(u=>u.Name == name).ToList();
         }
 
         public void Update(User user)

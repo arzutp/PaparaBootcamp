@@ -55,7 +55,6 @@ namespace PaparaBootcamp.Homework2.Controllers
             _userService.Update(userUpdateDtoRequest);
             return NoContent();
         }
-        //update kısmına bir daha bak
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
@@ -68,6 +67,20 @@ namespace PaparaBootcamp.Homework2.Controllers
         public IActionResult GetById(int id)
         {
             var result = _userService.GetById(id);
+            return Ok(result);
+        }
+
+        [HttpGet("name/{name}")]
+        public IActionResult GetByName(string name)
+        {
+            var result = _userService.GetByName(name);
+            return Ok(result);
+        }
+
+        [HttpGet("age/{age}")]
+        public IActionResult GetByAge(int age)
+        {
+            var result = _userService.GetByAge(age);
             return Ok(result);
         }
     }

@@ -10,5 +10,8 @@ namespace PaparaBootcamp.Homework2.Models.Users.UserServices
         ResponseDto<int> Add(UserAddDtoRequest request);
         void Update(UserUpdateDtoRequest request);
         ResponseDto<UserGetByIdDto> GetById(int id);
+        ResponseDto<List<UserGetByNameDto>> GetByName(string name);
+        ResponseDto<List<UserGetByAgeDto>> GetByAge(int age);
+        
     }
 }
