@@ -12,7 +12,10 @@ using PaparaBootcamp.Homework3.SingleResponsibilityPrinciple;
 //SingleResponsibilityPrincipleExample();
 //DependenciesShouldBeInjectedExample();
 //DontRepeatYourselfExample();
-ConditionCodeExample();
+//ConditionCodeExample();
+TernaryIfExample();
+
+
 
 #region MeaningfulNaming
 static void MeaningfulNamingExample()
@@ -137,5 +140,17 @@ static void ConditionCodeExample()
     conditionCode.CheckMilitaryBadCode(25, Gender.Man, false);
     Console.WriteLine("------clean code------");
     conditionCode.CheckMilitaryCleanCode(25, Gender.Man, false);
-} 
+}
+#endregion
+
+#region TernaryIf
+static void TernaryIfExample()
+{
+    Console.WriteLine("-----if i tek satırda kullanma örneği------");
+    TernaryIf ternaryIf = new();
+    Console.WriteLine("-----bad code------");
+    ternaryIf.GetUsersBadCode();
+    Console.WriteLine("------clean code------");
+    ternaryIf.GetUsersCleanCode();
+}
 #endregion
