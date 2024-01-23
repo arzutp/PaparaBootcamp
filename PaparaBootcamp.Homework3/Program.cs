@@ -1,5 +1,6 @@
 ﻿
 using PaparaBootcamp.Homework3;
+using PaparaBootcamp.Homework3.Conditions;
 using PaparaBootcamp.Homework3.DependenciesShouldBeInjected.IdealCode;
 using PaparaBootcamp.Homework3.DependenciesShouldBeInjected.NotIdealCode;
 using PaparaBootcamp.Homework3.DontRepeatYourself.IdealCode;
@@ -10,8 +11,8 @@ using PaparaBootcamp.Homework3.SingleResponsibilityPrinciple;
 //FunctionsShouldBeSmallExample();
 //SingleResponsibilityPrincipleExample();
 //DependenciesShouldBeInjectedExample();
-DontRepeatYourselfExample();
-
+//DontRepeatYourselfExample();
+ConditionCodeExample();
 
 #region MeaningfulNaming
 static void MeaningfulNamingExample()
@@ -96,5 +97,45 @@ static void DontRepeatYourselfExample()
     person.Work();
     Employee robot = new Robot();
     robot.Work();
+}
+#endregion
+
+#region Conditions
+static void ConditionCodeExample()
+{
+    //Bool controlleri
+    ConditionCode conditionCode = new ConditionCode();
+    Console.WriteLine("-----bool değişkeni için tekrar true false yazılmaması gerek onun için bir örnek-----");
+    conditionCode.BoolControl();
+    Console.WriteLine("-----bool için uzun uzun if else yazılmaması gerek onun için bir örnek-------");
+    Console.WriteLine("------bad code------");
+    conditionCode.AgeControlBadCode(24);
+    Console.WriteLine("------clean code------");
+    conditionCode.AgeControlCleanCode(26);
+    Console.WriteLine("-----bool değişkenlerini tersten kontrol etmemek gerekir--------");
+    Console.WriteLine("------bad code------");
+    conditionCode.IsFailed(30);
+    Console.WriteLine("------clean code------");
+    conditionCode.IsPassed(90);
+    Console.WriteLine("-----birden fazla ortak değişken varsa onları enum içinde tanımlama için örnek------");
+    Console.WriteLine("-----bad code------");
+    conditionCode.ColorSelectBadCode("Yellow");
+    Console.WriteLine("------clean code------");
+    conditionCode.ColorSelectCleanCode(Color.Green);
+    Console.WriteLine("-----değişkenleri kontrollerin içinde direkt yazmamak daha uygundur------");
+    Console.WriteLine("-----bad code------");
+    conditionCode.AdultControlBadCode(30);
+    Console.WriteLine("------clean code------");
+    conditionCode.AdultControlCleanCode(30, 16);
+    Console.WriteLine("--------kompleks koşullar ile ilgili örnek-------------");
+    Console.WriteLine("-----bad code------");
+    conditionCode.CanDriveCarBadCode();
+    Console.WriteLine("------clean code------");
+    conditionCode.CadDriveCarCleanCode(24, 18, false, true);
+    Console.WriteLine("------iç içe geçmiş sorgular ile örnek----------");
+    Console.WriteLine("-----bad code------");
+    conditionCode.CheckMilitaryBadCode(25, Gender.Man, false);
+    Console.WriteLine("------clean code------");
+    conditionCode.CheckMilitaryCleanCode(25, Gender.Man, false);
 } 
 #endregion
