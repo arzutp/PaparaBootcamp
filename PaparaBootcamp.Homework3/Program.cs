@@ -2,13 +2,15 @@
 using PaparaBootcamp.Homework3;
 using PaparaBootcamp.Homework3.DependenciesShouldBeInjected.IdealCode;
 using PaparaBootcamp.Homework3.DependenciesShouldBeInjected.NotIdealCode;
+using PaparaBootcamp.Homework3.DontRepeatYourself.IdealCode;
+using PaparaBootcamp.Homework3.DontRepeatYourself.NotIdealCode;
 using PaparaBootcamp.Homework3.SingleResponsibilityPrinciple;
 
 //MeaningfulNamingExample();
 //FunctionsShouldBeSmallExample();
 //SingleResponsibilityPrincipleExample();
 //DependenciesShouldBeInjectedExample();
-
+DontRepeatYourselfExample();
 
 
 #region MeaningfulNaming
@@ -77,5 +79,22 @@ static void DependenciesShouldBeInjectedExample()
     IdealMessageSender idealMessageSender = new IdealMessageSender();
     idealMessageSender.Send(new Letter());
     idealMessageSender.Send(new IdealCodeGmail());
+}
+#endregion
+
+#region DontRepeatYourself
+static void DontRepeatYourselfExample()
+{
+    Console.WriteLine("-------Don't Repeat Yourself-------");
+    Console.WriteLine("--------Bad code example--------");
+    PersonEmployee personEmployee = new();
+    personEmployee.Work();
+    RobotEmployee robotEmployee = new();
+    robotEmployee.Work();
+    Console.WriteLine("\n -------Clean code example-------");
+    Employee person = new Person();
+    person.Work();
+    Employee robot = new Robot();
+    robot.Work();
 } 
 #endregion
