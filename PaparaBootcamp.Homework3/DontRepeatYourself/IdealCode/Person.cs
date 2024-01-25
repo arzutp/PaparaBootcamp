@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PaparaBootcamp.Homework3.DontRepeatYourself.IdealCode
 {
-    public class Person : Employee
+    public class Person : BaseEmployee
     {
     }
 }

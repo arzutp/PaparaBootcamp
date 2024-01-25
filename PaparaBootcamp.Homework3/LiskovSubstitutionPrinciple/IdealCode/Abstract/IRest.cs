@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaparaBootcamp.Homework3.DontRepeatYourself.IdealCode
+namespace PaparaBootcamp.Homework3.LiskovSubstitutionPrinciple.IdealCode.Abstract
 {
-    public class Robot : BaseEmployee
+    public interface IRest
     {
+        void Rest();
     }
 }

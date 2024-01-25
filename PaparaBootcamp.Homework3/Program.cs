@@ -5,20 +5,34 @@ using PaparaBootcamp.Homework3.DependenciesShouldBeInjected.IdealCode;
 using PaparaBootcamp.Homework3.DependenciesShouldBeInjected.NotIdealCode;
 using PaparaBootcamp.Homework3.DontRepeatYourself.IdealCode;
 using PaparaBootcamp.Homework3.DontRepeatYourself.NotIdealCode;
+using PaparaBootcamp.Homework3.InterfaceSegregationPrinciple.IdealCode.Abstratct;
+using PaparaBootcamp.Homework3.InterfaceSegregationPrinciple.IdealCode.Concrete;
+using PaparaBootcamp.Homework3.InterfaceSegregationPrinciple.NotIdealCode.Abtract;
+using PaparaBootcamp.Homework3.InterfaceSegregationPrinciple.NotIdealCode.Concrete;
+using PaparaBootcamp.Homework3.LiskovSubstitutionPrinciple.IdealCode.Abstract;
+using PaparaBootcamp.Homework3.LiskovSubstitutionPrinciple.IdealCode.Concrete;
+using PaparaBootcamp.Homework3.LiskovSubstitutionPrinciple.NotIdealCode;
+using PaparaBootcamp.Homework3.OpenClosedPrinciple.IdealCode;
+using PaparaBootcamp.Homework3.OpenClosedPrinciple.NotIdealCode;
 using PaparaBootcamp.Homework3.SingleResponsibilityPrinciple;
+using Gmail = PaparaBootcamp.Homework3.OpenClosedPrinciple.IdealCode.Gmail;
+using OpenClosedMessageSender = PaparaBootcamp.Homework3.OpenClosedPrinciple.IdealCode.OpenClosedMessageSender;
 
-//MeaningfulNamingExample();
-//FunctionsShouldBeSmallExample();
-//SingleResponsibilityPrincipleExample();
-//DependenciesShouldBeInjectedExample();
-//DontRepeatYourselfExample();
-//ConditionCodeExample();
+
+MeaningfulNamingExample();
+FunctionsShouldBeSmallExample();
+SingleResponsibilityPrincipleExample();
+DependenciesShouldBeInjectedExample();
+DontRepeatYourselfExample();
+ConditionCodeExample();
 TernaryIfExample();
-
+OpenClosedPrincipleExample();
+LiskovSubstitutionPrincipleExample();
+InterfaceSegregationPrincipleExample();
 
 
 #region MeaningfulNaming
-static void MeaningfulNamingExample()
+void MeaningfulNamingExample()
 {
     MeaningfulNaming meaningfulNaming = new MeaningfulNaming();
     //bad code
@@ -35,11 +49,11 @@ static void MeaningfulNamingExample()
 #endregion
 
 #region FunctionsShouldBeSmall
-static void FunctionsShouldBeSmallExample()
+void FunctionsShouldBeSmallExample()
 {
     FunctionsShouldBeSmall functionsShouldBeSmall = new FunctionsShouldBeSmall();
     //bad code
-    Console.WriteLine("--------Functions Should Be Small Example---------");
+    Console.WriteLine("\n--------Functions Should Be Small Example---------");
     Console.WriteLine("--------Bad code example--------");
     functionsShouldBeSmall.DatabaseConnectionAndSendMessage();
     Console.WriteLine("\n -------Clean code example-------");
@@ -49,9 +63,9 @@ static void FunctionsShouldBeSmallExample()
 #endregion
 
 #region SingleResponsibilityPrinciple
-static void SingleResponsibilityPrincipleExample()
+void SingleResponsibilityPrincipleExample()
 {
-    Console.WriteLine("--------Single Responsibility Principle Example---------");
+    Console.WriteLine("\n--------Single Responsibility Principle Example---------");
     NotIdealCode notIdealCode = new NotIdealCode();
     Console.WriteLine("--------Bad code example--------");
     notIdealCode.DatabaseConnection();
@@ -73,9 +87,9 @@ static void SingleResponsibilityPrincipleExample()
 #endregion
 
 #region DependenciesShouldBeInjected
-static void DependenciesShouldBeInjectedExample()
+void DependenciesShouldBeInjectedExample()
 {
-    Console.WriteLine("-------Dependencies Should Be Injected-------");
+    Console.WriteLine("\n-------Dependencies Should Be Injected-------");
     Console.WriteLine("--------Bad code example--------");
     MessageSender messageSender = new MessageSender();
     messageSender.Send();
@@ -87,25 +101,26 @@ static void DependenciesShouldBeInjectedExample()
 #endregion
 
 #region DontRepeatYourself
-static void DontRepeatYourselfExample()
+void DontRepeatYourselfExample()
 {
-    Console.WriteLine("-------Don't Repeat Yourself-------");
+    Console.WriteLine("\n-------Don't Repeat Yourself-------");
     Console.WriteLine("--------Bad code example--------");
     PersonEmployee personEmployee = new();
     personEmployee.Work();
     RobotEmployee robotEmployee = new();
     robotEmployee.Work();
     Console.WriteLine("\n -------Clean code example-------");
-    Employee person = new Person();
+    BaseEmployee person = new Person();
     person.Work();
-    Employee robot = new Robot();
+    BaseEmployee robot = new Robot();
     robot.Work();
 }
 #endregion
 
 #region Conditions
-static void ConditionCodeExample()
+void ConditionCodeExample()
 {
+    Console.WriteLine("\n---------Conditions----------");
     //Bool controlleri
     ConditionCode conditionCode = new ConditionCode();
     Console.WriteLine("-----bool değişkeni için tekrar true false yazılmaması gerek onun için bir örnek-----");
@@ -144,13 +159,69 @@ static void ConditionCodeExample()
 #endregion
 
 #region TernaryIf
-static void TernaryIfExample()
+void TernaryIfExample()
 {
-    Console.WriteLine("-----if i tek satırda kullanma örneği------");
+    Console.WriteLine("\n-----if i tek satırda kullanma örneği------");
     TernaryIf ternaryIf = new();
     Console.WriteLine("-----bad code------");
     ternaryIf.GetUsersBadCode();
     Console.WriteLine("------clean code------");
     ternaryIf.GetUsersCleanCode();
+}
+#endregion
+
+#region OpenClosedPrinciple
+void OpenClosedPrincipleExample()
+{
+    Console.WriteLine("\n------------Open Closed Principle Example-----------");
+    //bad code 
+    MessageSenderNotIdeal messageSenderNotIdeal = new MessageSenderNotIdeal();
+    messageSenderNotIdeal.MessageSend("Aslı", "bla bla bla");
+
+    //clean code
+    OpenClosedMessageSender messageSender = new OpenClosedMessageSender();
+    messageSender.MessageSend(new Gmail(), "Volkan", "bla bla bla");
+}
+#endregion
+
+#region LiskovSubstitutionPrinciple
+void LiskovSubstitutionPrincipleExample()
+{
+    Console.WriteLine("\n------------Liskov Substitution Principle Example-----------");
+    Console.WriteLine("-----bad code------");
+    RobotNotIdealCode robotNotIdealCode = new RobotNotIdealCode();
+    robotNotIdealCode.Work();
+    //robotNotIdealCode.Eat(); //bu şekilde kullanmayı çalıştığımız zaman hata fırlatmış olur
+    EngineerNotIdealCode engineerNotIdealCode = new EngineerNotIdealCode();
+    engineerNotIdealCode.Work();
+    engineerNotIdealCode.Eat();
+    engineerNotIdealCode.Rest();
+    Console.WriteLine("------clean code------");
+    WorkerIdealCode worker = new WorkerIdealCode();
+    worker.Work();
+    worker.Eat();
+    worker.Rest();
+    RobotIdealCode robot = new RobotIdealCode();
+    robot.Work();
+
+}
+#endregion
+
+#region InterfaceSegregationPrinciple
+void InterfaceSegregationPrincipleExample()
+{
+    Console.WriteLine("\n------------Interface Segregation Principle Example-----------");
+    Console.WriteLine("-----bad code------");
+    IBaseDatabaseWorksNotIdealCode admin = new AdminManagerNotIdealCode();
+    admin.GetAll();
+    //admin.GetAllWithCategory("bbjbkj");  //bu şekilde kullanırsak hata fırlatır
+    Console.WriteLine("------clean code------");
+    IProduct productManager = new ProductManager();
+    productManager.GetAll();
+    productManager.GetAllWithCategory("aaaa");
+    IBaseDatabaseWorks adminManager = new AdminManager();
+    adminManager.GetAll();
+    adminManager.Delete();
+    adminManager.Add();
 }
 #endregion
