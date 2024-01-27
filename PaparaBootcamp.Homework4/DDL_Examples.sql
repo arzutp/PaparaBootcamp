@@ -97,3 +97,5 @@ create table BookGenres (
 );
 
 
+alter table orders 
+alter column OrderDate date not null
