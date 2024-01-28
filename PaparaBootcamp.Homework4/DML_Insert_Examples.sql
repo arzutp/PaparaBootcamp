@@ -6,10 +6,14 @@
 insert into Author (name) values ('Franz Kafka');
 insert into Author (name) values ('Honoré de Balzac');
 insert into Author (name) values ('Fyodor Dostoyevski');
+insert into Author (name) values ('Lev Tolstoy')
+insert into Author (name) values ('Camus')
 
 insert into Books (bookName, authorId, publicationYear) values ('Dönüşüm', 1, 2001);
 insert into Books (bookName, authorId, publicationYear) values ('İnsancıklar', 3, 2019);
 insert into Books (bookName, authorId, publicationYear) values ('Goriot Baba', 2, 2019);
+insert into Books (bookName, authorId, publicationYear) values ('Yabancı', 5, 2019);
+insert into Books (bookName, authorId, publicationYear) values ('Suç ve Ceza', 5, 2001);
 
 insert into Genres (name) values ('Roman');
 insert into Genres (name) values ('Çeviri');
