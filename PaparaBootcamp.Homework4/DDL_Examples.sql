@@ -83,7 +83,9 @@ drop column address
 alter table books
 add publicationYear int
 
-
+--not null yapmayı unuttuğum için güncelleme yaptım
+alter table books
+alter column publicationYear int not null
 
 --tabloyu silmek için kullanılır
 drop table BookGenres 
@@ -105,6 +107,7 @@ alter column OrderDate date not null
 
 --bağlantısı olan bir tabloyu silmek için önce bağlantıları temizlemek gerekir
 --ForeignKeyName = FK__Books__authorId__3B75D760
+--ForeignKeyName farklı olabilir!!!
 ----altta ki sorgu ile bağlantıyı kopardık
 alter table Books drop constraint FK__Books__authorId__3B75D760;
 
