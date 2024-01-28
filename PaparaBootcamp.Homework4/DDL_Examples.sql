@@ -74,12 +74,12 @@ add address varchar(50) not null
 alter table books
 add address varchar(100) not null
 
---DROP-Tabloların nesnelerin silinmesini sağlar.
+--DROP-Tabloların nesnelerin/sütun silinmesini sağlar.
 --silme
 alter table books
 drop column address
 
-
+--sütun ekleme
 alter table books
 add publicationYear int
 
@@ -96,6 +96,48 @@ create table BookGenres (
 	foreign key(genreId) references Genres(id)
 );
 
-
+--güncelleme
 alter table orders 
 alter column OrderDate date not null
+
+
+
+
+--bağlantısı olan bir tabloyu silmek için önce bağlantıları temizlemek gerekir
+--ForeignKeyName = FK__Books__authorId__3B75D760
+----altta ki sorgu ile bağlantıyı kopardık
+alter table Books drop constraint FK__Books__authorId__3B75D760;
+
+--daha sonra books tablosundan authorId yi sildik
+alter table Books
+drop column authorId
+
+--daha sonra author tablosunu sildik
+drop table Author
+
+
+--tekrar ekledim
+Create Table Author(
+	id int IDENTITY(1,1) primary key,
+    name varchar(50) not null,
+);
+
+--daha sonra books tablosuna tekrar bağlama işlemi gerçekleştirmek için author id ekledim
+alter table Books 
+add authorId int not null
+
+
+--daha sonra bağlama işlemini yaptım
+ALTER TABLE Books
+ADD CONSTRAINT FK_Books_Author
+FOREIGN KEY (authorId) REFERENCES Author(id);
+
+
+--database silme işlemi
+--önce tüm bağlantıları sona erdirdik çünkü halla kullanıyor diye hata veriyor
+
+alter database BookShopierDb set single_user with rollback immediate;
+
+
+--sonra silme işlemini gereçekleştirdik
+drop database BookShopierDb
