@@ -1,5 +1,5 @@
 ﻿--DML
---- UPDATE güncelleme işlemleriçin
+--- UPDATE güncelleme işlemler için
 
 update Author 
 Set name = 'Albert Camus' where id=5
@@ -10,3 +10,6 @@ where id = 3;
 
 update Books
 Set authorId = 3 where id = 5
+
+update Users
+set password = 123456 where id = 1
