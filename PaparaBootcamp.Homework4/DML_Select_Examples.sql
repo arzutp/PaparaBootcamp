@@ -58,3 +58,46 @@ select bookname as 'Book Name', name as 'Author Name'
 From Books 
 right join Author on Books.authorId = Author.id
 
+
+--adında ba geçen kitap var mı ?
+Select * from Books where  bookName like'%ba%'
+
+
+--ortalama fiyat
+select avg(Price) from OrderItems 
+
+
+--en çok bulunan yazarları ve kitap sayıları
+select Author.name as 'Author Name', COUNT(*) as 'Book Count' from Books
+inner join Author 
+on Author.id = Books.authorId
+group by Author.name order by COUNT(*) desc
+
+
+--en çok kitabı bulunan yazar 
+select top(1) name as 'Author Name', COUNT(*) as 'Book Count' from Books
+inner join Author 
+on Author.id = Books.authorId
+group by name order by COUNT(*) desc
+
+
+--çoka çok ilişkili tablolaro birleştirme
+select Books.bookName as 'Book Name',  Genres.name as 'Genre Name'
+FROM Books
+join BookGenres ON Books.id = BookGenres.bookId
+join Genres ON BookGenres.genreId = Genres.id;
+
+
+--kaç türde kitap var
+select Distinct(Genres.name)
+FROM Books
+join BookGenres ON Books.id = BookGenres.bookId
+join Genres ON BookGenres.genreId = Genres.id;
+
+
+--kaç farklı çeşitte kitap var
+select COUNT(Distinct(Genres.name))
+FROM Books
+join BookGenres ON Books.id = BookGenres.bookId
+join Genres ON BookGenres.genreId = Genres.id;
+
