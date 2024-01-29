@@ -101,3 +101,55 @@ FROM Books
 join BookGenres ON Books.id = BookGenres.bookId
 join Genres ON BookGenres.genreId = Genres.id;
 
+
+--and - iki koşulun da doğru olması gerek
+select * from Books
+join Author on Author.id = Books.authorId 
+where bookName = 'Yabancı' and name= 'Albert Camus'
+
+
+--or - bir koşulun doğru olması yeterli
+select * from Books
+join Author on Author.id = Books.authorId 
+where bookName = 'Yabancı' or name= 'Fyodor Dostoyevski'
+
+
+--order by - sıralama yapar 
+--desc eklediğimiz de büyükten küçüğe sıralar
+select * from OrderItems
+order by Price 
+
+select * from OrderItems
+order by Price desc
+
+
+--bir tablodaki tüm kayotları silmek için 
+delete from BookGenres
+
+
+--sonu a ile biten kitaplar
+select * from Books where bookName like '%a'
+
+
+--g ile başlayan kitaplar
+select * from Books where bookName like 'g%'
+
+
+-- kitap adı a g ya da i ile başlayan kayıtlar
+select * from Books
+WHERE bookName like '[agi]%'
+
+
+-- in kullanımı where ile birden fazla değeri aratabilmemizi sağlar
+select * from Books
+WHERE bookName in ('İnsancıklar', 'Yabancı')
+
+
+--between kullanımı
+select * from Books
+where publicationYear between 2012 and 2019
+
+
+select count(*) from Books
+
+
