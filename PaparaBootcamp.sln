@@ -7,7 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaparaBootcamp.Homework1", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaparaBootcamp.Homework2", "PaparaBootcamp.Homework2\PaparaBootcamp.Homework2.csproj", "{189255F2-EA4A-4848-B8BC-360AF1F727E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaparaBootcamp.Homework3", "PaparaBootcamp.Homework3\PaparaBootcamp.Homework3.csproj", "{B26655A8-72C8-4BE4-9E51-8EB53CEE4B22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaparaBootcamp.Homework3", "PaparaBootcamp.Homework3\PaparaBootcamp.Homework3.csproj", "{B26655A8-72C8-4BE4-9E51-8EB53CEE4B22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaparaBootcamp.Homework4", "PaparaBootcamp.Homework4", "{D5EDDD2C-E0FF-4E63-9918-4324A22997BC}"
+	ProjectSection(SolutionItems) = preProject
+		DDL_Examples.sql = DDL_Examples.sql
+		DML_Delete_Examples.sql = DML_Delete_Examples.sql
+		DML_Insert_Examples.sql = DML_Insert_Examples.sql
+		DML_Select_Examples.sql = DML_Select_Examples.sql
+		DML_Update_Examples.sql = DML_Update_Examples.sql
+		SqlServer_DataTypes.sql = SqlServer_DataTypes.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

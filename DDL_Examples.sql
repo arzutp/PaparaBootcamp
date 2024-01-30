@@ -1,14 +1,14 @@
-ï»¿---DDL veritabanÄ± veya tablo oluÅŸturmayÄ±, silmeyi be gÃ¼ncelleme yapmayÄ± saÄŸlayan ifadelerdir. 
+---DDL veritabanı veya tablo oluşturmayı, silmeyi be güncelleme yapmayı sağlayan ifadelerdir. 
 ---Create, Alter, Drop
 
 --Create
---CREATE DATABASEÂ â€” VeritabanÄ± oluÅŸturmak iÃ§in kullanÄ±lÄ±r.
---CREATE TABLEÂ â€” Tablo oluÅŸturmak iÃ§in kullanÄ±lÄ±r.
+--CREATE DATABASE — Veritabanı oluşturmak için kullanılır.
+--CREATE TABLE — Tablo oluşturmak için kullanılır.
 
----veritabanÄ± oluÅŸturmak iÃ§in 
+---veritabanı oluşturmak için 
 Create Database BookShopierDb
 
---veritabanÄ±nda tablo oluÅŸturmak iÃ§in
+--veritabanında tablo oluşturmak için
 Create Table Users(
 	id int IDENTITY(1,1) primary key,
     username varchar(50) not null,
@@ -60,34 +60,34 @@ create table OrderItems (
 );
 
 
---ALTER : tablolarda deÄŸiÅŸiklik yapÄ±lmasÄ±nÄ± saÄŸlar
+--ALTER : tablolarda değişiklik yapılmasını sağlar
 alter table Author
 alter column name varchar(50) NOT NULL;
 
 
---tabloya yeni sÃ¼tun eklemek iÃ§in
+--tabloya yeni sütun eklemek için
 alter table users
 add address varchar(50) not null
 
---tabloya yeni sÃ¼tun ekleyip silme denemesi yaptÄ±m
+--tabloya yeni sütun ekleyip silme denemesi yaptım
 --ekleme
 alter table books
 add address varchar(100) not null
 
---DROP-TablolarÄ±n nesnelerin/sÃ¼tun silinmesini saÄŸlar.
+--DROP-Tabloların nesnelerin/sütun silinmesini sağlar.
 --silme
 alter table books
 drop column address
 
---sÃ¼tun ekleme
+--sütun ekleme
 alter table books
 add publicationYear int
 
---not null yapmayÄ± unuttuÄŸum iÃ§in gÃ¼ncelleme yaptÄ±m
+--not null yapmayı unuttuğum için güncelleme yaptım
 alter table books
 alter column publicationYear int not null
 
---tabloyu silmek iÃ§in kullanÄ±lÄ±r
+--tabloyu silmek için kullanılır
 drop table BookGenres 
 
 create table BookGenres (
@@ -98,17 +98,17 @@ create table BookGenres (
 	foreign key(genreId) references Genres(id)
 );
 
---gÃ¼ncelleme
+--güncelleme
 alter table orders 
 alter column OrderDate date not null
 
 
 
 
---baÄŸlantÄ±sÄ± olan bir tabloyu silmek iÃ§in Ã¶nce baÄŸlantÄ±larÄ± temizlemek gerekir
+--bağlantısı olan bir tabloyu silmek için önce bağlantıları temizlemek gerekir
 --ForeignKeyName = FK__Books__authorId__3B75D760
---ForeignKeyName farklÄ± olabilir!!!
-----altta ki sorgu ile baÄŸlantÄ±yÄ± kopardÄ±k
+--ForeignKeyName farklı olabilir!!!
+----altta ki sorgu ile bağlantıyı kopardık
 alter table Books drop constraint FK__Books__authorId__3B75D760;
 
 --daha sonra books tablosundan authorId yi sildik
@@ -125,22 +125,40 @@ Create Table Author(
     name varchar(50) not null,
 );
 
---daha sonra books tablosuna tekrar baÄŸlama iÅŸlemi gerÃ§ekleÅŸtirmek iÃ§in author id ekledim
+--daha sonra books tablosuna tekrar bağlama işlemi gerçekleştirmek için author id ekledim
 alter table Books 
 add authorId int not null
 
 
---daha sonra baÄŸlama iÅŸlemini yaptÄ±m
+--daha sonra bağlama işlemini yaptım
 ALTER TABLE Books
 ADD CONSTRAINT FK_Books_Author
 FOREIGN KEY (authorId) REFERENCES Author(id);
 
 
---database silme iÅŸlemi
---Ã¶nce tÃ¼m baÄŸlantÄ±larÄ± sona erdirdik Ã§Ã¼nkÃ¼ halla kullanÄ±yor diye hata veriyor
+--database silme işlemi
+--önce tüm bağlantıları sona erdirdik çünkü halla kullanıyor diye hata veriyor
 
 alter database BookShopierDb set single_user with rollback immediate;
 
+--nu sorgu da kullanıldığı yerleri listeler
+use master;
+select
+   d.name,
+   d.dbid,
+   spid,
+   login_time,
+   nt_domain,
+   nt_username,
+   loginame
+from
+   sysprocesses p
+join
+   sysdatabases d
+on
+   p.dbid = d.dbid
+where
+   d.name = 'BookShopierDb';
 
---sonra silme iÅŸlemini gereÃ§ekleÅŸtirdik
+--sonra silme işlemini gereçekleştirdik
 drop database BookShopierDb

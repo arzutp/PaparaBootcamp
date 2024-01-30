@@ -1,28 +1,29 @@
-ï»¿--DML
--- Tabloya kayÄ±t girmek, kayÄ±t silmek ve gÃ¼ncellemek gibi iÅŸlemlerin yapÄ±lmasÄ± . 
+--DML
+-- Tabloya kayýt girmek, kayýt silmek ve güncellemek gibi iþlemlerin yapýlmasý . 
 --- SELECT - INSERT - UPDATE - DELETE 
 
---Insert tabloya kayÄ±t girmek iÃ§in
+--Insert tabloya kayýt girmek için
 insert into Author (name) values ('Franz Kafka');
-insert into Author (name) values ('HonorÃ© de Balzac');
+insert into Author (name) values ('Honoré de Balzac');
 insert into Author (name) values ('Fyodor Dostoyevski');
 insert into Author (name) values ('Lev Tolstoy')
 insert into Author (name) values ('Camus')
 
 
-insert into Books (bookName, authorId, publicationYear) values ('DÃ¶nÃ¼ÅŸÃ¼m', 1, 2001);
-insert into Books (bookName, authorId, publicationYear) values ('Ä°nsancÄ±klar', 3, 2019);
+insert into Books (bookName, authorId, publicationYear) values ('Dönüþüm', 1, 2001);
+insert into Books (bookName, authorId, publicationYear) values ('Ýnsancýklar', 3, 2019);
 insert into Books (bookName, authorId, publicationYear) values ('Goriot Baba', 2, 2019);
-insert into Books (bookName, authorId, publicationYear) values ('YabancÄ±', 5, 2019);
-insert into Books (bookName, authorId, publicationYear) values ('SuÃ§ ve Ceza', 5, 2001);
+insert into Books (bookName, authorId, publicationYear) values ('Yabancý', 5, 2019);
+insert into Books (bookName, authorId, publicationYear) values ('Suç ve Ceza', 5, 2001);
 insert into Books (bookName, authorId, publicationYear) values ('Vadideki Zambak', 2, 2001);
 
 
 insert into Genres (name) values ('Roman');
-insert into Genres (name) values ('Ã‡eviri');
+insert into Genres (name) values ('Çeviri');
 insert into Genres (name) values ('Korku');
 insert into Genres (name) values ('Japon Edb');
 insert into Genres (name) values ('Tiyatro');
+insert into Genres (name) values ('Fabl');
 
 insert into BookGenres (bookId, genreId) values (1,1)
 insert into BookGenres (bookId, genreId) values (1,2)
@@ -31,7 +32,7 @@ insert into BookGenres (bookId, genreId) values (2,2)
 insert into BookGenres (bookId, genreId) values (3,1)
 insert into BookGenres (bookId, genreId) values (3,2)
 
-insert into Users (username, email, password, address) values ('ahmet', 'ahmet@gmail.com', '22222', 'istanbul Ã¼skÃ¼dar')
+insert into Users (username, email, password, address) values ('ahmet', 'ahmet@gmail.com', '22222', 'istanbul üsküdar')
 insert into Users (username, email, password, address) values ('arzu', 'arzu@gmail.com', '021222', 'izmir buca')
 
 insert into Orders (userId, OrderDate) values (1, '2024-01-27')
