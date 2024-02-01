@@ -54,5 +54,13 @@ namespace WebAPI.Controllers
             _unitOfWork.Commit();
             return NoContent();
         }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            _categoryWriteService.DeleteById(id);
+            _unitOfWork.Commit();
+            return NoContent();
+        }
     }
 }

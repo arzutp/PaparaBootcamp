@@ -26,7 +26,8 @@ namespace DataAccessLayer.Concrete.EntityFramework
 
         public void Remove(int id)
         {
-            _context.Remove(id);           
+            var result = _context.Set<T>().FirstOrDefault(x => x.Id == id);
+            _context.Remove(result!);      
         }
 
         public void Update(T entity)

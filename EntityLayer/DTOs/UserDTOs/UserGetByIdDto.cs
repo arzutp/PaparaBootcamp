@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.DTOs.CategoryDTOs
+namespace EntityLayer.DTOs.UserDTOs
 {
-    public class CategoryGetByIdDto : CategoryReadBaseDto
+    public class UserGetByIdDto : UserReadBaseDto
     {
     }
 }

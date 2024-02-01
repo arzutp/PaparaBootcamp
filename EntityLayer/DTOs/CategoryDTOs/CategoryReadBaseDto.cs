@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.DTOs.CategoryDTOs
 {
-    public class CategoryBaseResultDto
+    public class CategoryReadBaseDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = default!;

@@ -1,16 +1,14 @@
-﻿using EntityLayer.Entities.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.Entities
+namespace EntityLayer.DTOs.UserDTOs
 {
-    public class User : BaseEntity
+    public class UserWriteBaseDto
     {
         public string Username { get; set; } = default!;
         public string Email { get; set; } = default!;
-        public List<Product>? Products { get; set; }
     }
 }

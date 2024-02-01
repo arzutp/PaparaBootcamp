@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.DTOs.CategoryDTOs
+namespace EntityLayer.DTOs.ProductDTOs
 {
-    public class CategoryGetByIdDto : CategoryReadBaseDto
+    public class ProductUpdateDto : ProductWriteBaseDto
     {
+        public int Id { get; set; }
     }
 }

@@ -1,18 +1,16 @@
-﻿using EntityLayer.Entities.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityLayer.Entities
+namespace EntityLayer.DTOs.ProductFeatureDTOs
 {
-    public class ProductFeature : BaseEntity
+    public class ProductFeatureWriteBaseDto
     {
         public int Height { get; set; }
         public int Width { get; set; }
         public string Color { get; set; } = default!;
         public int ProductId { get; set; }
-        public Product Products { get; set; } = default!;
     }
 }

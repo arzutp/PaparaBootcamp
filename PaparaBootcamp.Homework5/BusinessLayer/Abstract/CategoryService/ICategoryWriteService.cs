@@ -11,7 +11,6 @@ namespace BusinessLayer.Abstract.CategoryService
     public interface ICategoryWriteService
     {
         Task<ResponseDto<CategoryAddDto>> AddCategory(CategoryAddDto request);
-        // Task<CategoryAddDto> Add(CategoryAddDto entity);
         void DeleteById(int id);
         void Update(CategoryUpdateDto categoryUpdateDto);
     }
