@@ -64,5 +64,18 @@ namespace WebAPI.Controllers
             return NoContent();
         }
 
+        [HttpGet("WithCategory")]
+        public IActionResult GetWithCategory()
+        {
+            var results = _productReadService.GetAllProductsWithCategory();
+            return Ok(results);
+        }
+
+        [HttpGet("WithDefinition")]
+        public IActionResult GetWithDefinition()
+        {
+            var results = _productReadService.GetAllProductWithDefinition();
+            return Ok(results);
+        }
     }
 }

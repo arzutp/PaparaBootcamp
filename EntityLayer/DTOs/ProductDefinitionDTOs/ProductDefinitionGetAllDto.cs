@@ -8,5 +8,6 @@ namespace EntityLayer.DTOs.ProductDefinitionDTOs
 {
     public class ProductDefinitionGetAllDto : ProductDefinitionReadBase
     {
+        
     }
 }

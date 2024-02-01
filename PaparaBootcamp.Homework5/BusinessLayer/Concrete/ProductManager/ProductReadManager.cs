@@ -4,6 +4,7 @@ using BusinessLayer.Constants;
 using BusinessLayer.Response;
 using DataAccessLayer.Abstract.ProductRepository;
 using EntityLayer.DTOs.ProductDTOs;
+using EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,16 @@ namespace BusinessLayer.Concrete.ProductManager
             var results = _productReadRepository.GetAll();
             var productGetAllDtos = _mapper.Map<List<ProductGetAllDto>>(results);
             return productGetAllDtos;
+        }
+
+        public List<ProductWithCategoryDto> GetAllProductsWithCategory()
+        {
+            return _productReadRepository.GetAllProductWithCategory();
+        }
+
+        public List<ProductWithDefinitionGetAllDto> GetAllProductWithDefinition()
+        {
+            return _productReadRepository.GetAllProductWithDefinition();
         }
 
         public async Task<ResponseDto<ProductGetByIdDto>> GetById(int id)
