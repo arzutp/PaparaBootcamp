@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.Abstract.CategoryService;
-using BusinessLayer.Concrete;
+using BusinessLayer.Concrete.CategoryManager;
 using DataAccessLayer.Abstract.CategoryRepository;
 using DataAccessLayer.Concrete.EntityFramework.CategoryRepositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +17,8 @@ namespace BusinessLayer.DIContainer
         {
             services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
             services.AddScoped<ICategoryReadService, CategoryReadManager>();
+            services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
+            services.AddScoped<ICategoryWriteService, CategoryWriteManager>();
 
         }
     }

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLayer.Abstract.CategoryService;
+using BusinessLayer.Constants;
+using BusinessLayer.Response;
 using DataAccessLayer.Abstract.CategoryRepository;
 using DataAccessLayer.Concrete.EntityFramework.CategoryRepositories;
 using DataAccessLayer.Contexts;
@@ -11,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Concrete
+namespace BusinessLayer.Concrete.CategoryManager
 {
     public class CategoryReadManager : ICategoryReadService
     {
@@ -24,25 +26,25 @@ namespace BusinessLayer.Concrete
             _categoryReadRepository = categoryReadRepository;
         }
 
-        
+
 
         public List<CategoryGetAllDto> GetAll()
         {
             var categories = _categoryReadRepository.GetAll();
             var categoryGetAllDtos = _mapper.Map<List<CategoryGetAllDto>>(categories);
             return categoryGetAllDtos;
-            //List<CategoryGetAllDto> categoryDtos = new List<CategoryGetAllDto>();
-           
-            //foreach (Category category in categories)
-            //{
-            //    categoryDtos.Add(new CategoryGetAllDto
-            //    {
-            //        Id = category.Id,
-            //        Name = category.Name,
-            //        Description = category.Description,
-            //    });
-            //}
-            //return categoryDtos;
+
+        }
+
+        public async Task<ResponseDto<CategoryGetByIdDto>> GetById(int id)
+        {
+            var categoryGetById = await _categoryReadRepository.GetByIdAsync(id);
+            CategoryGetByIdDto categoryGetByIdDto = _mapper.Map<CategoryGetByIdDto>(categoryGetById);
+            if (categoryGetByIdDto == null)
+            {
+                return ResponseDto<CategoryGetByIdDto>.Fail(Messages.CategoryInvalid);
+            }
+            return ResponseDto<CategoryGetByIdDto>.Success(categoryGetByIdDto);
         }
     }
 }

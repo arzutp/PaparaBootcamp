@@ -12,7 +12,9 @@ namespace BusinessLayer.Mapping
     public class DtoProfile : Profile
     {
         public DtoProfile() {
-            CreateMap<Category, CategoryGetAllDto>().ReverseMap();
+            CreateMap<Category, CategoryGetAllDto>();
+            CreateMap<Category, CategoryGetByIdDto>();
+            CreateMap<Category, CategoryAddDto>().ReverseMap();
         }
     }
 }
