@@ -8,5 +8,6 @@ namespace EntityLayer.DTOs.CategoryDTOs
 {
     public class CategoryUpdateDto : CategoryWriteBaseDto
     {
+        public int Id { get; set; }
     }
 }

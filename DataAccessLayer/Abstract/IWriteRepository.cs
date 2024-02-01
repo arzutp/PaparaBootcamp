@@ -10,7 +10,7 @@ namespace DataAccessLayer.Abstract
     public interface IWriteRepository<T> : IRepository<T> where T :  BaseEntity, new()
     {
         Task<T> AddAsync(T entity);
-        void Remove(T entity);
+        void Remove(int id);
         void Update(T entity);
     }
 }

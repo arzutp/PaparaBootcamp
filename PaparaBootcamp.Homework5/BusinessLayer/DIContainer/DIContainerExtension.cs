@@ -2,6 +2,7 @@
 using BusinessLayer.Concrete.CategoryManager;
 using DataAccessLayer.Abstract.CategoryRepository;
 using DataAccessLayer.Concrete.EntityFramework.CategoryRepositories;
+using DataAccessLayer.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace BusinessLayer.DIContainer
             services.AddScoped<ICategoryReadService, CategoryReadManager>();
             services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
             services.AddScoped<ICategoryWriteService, CategoryWriteManager>();
-
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

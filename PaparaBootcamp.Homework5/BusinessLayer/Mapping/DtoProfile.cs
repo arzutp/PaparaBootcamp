@@ -15,6 +15,7 @@ namespace BusinessLayer.Mapping
             CreateMap<Category, CategoryGetAllDto>();
             CreateMap<Category, CategoryGetByIdDto>();
             CreateMap<Category, CategoryAddDto>().ReverseMap();
+            CreateMap<Category, CategoryUpdateDto>().ReverseMap();  
         }
     }
 }

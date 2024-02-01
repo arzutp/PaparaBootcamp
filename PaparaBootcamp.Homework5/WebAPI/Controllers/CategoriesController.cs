@@ -5,6 +5,7 @@ using BusinessLayer.Concrete;
 using BusinessLayer.Concrete.CategoryManager;
 using BusinessLayer.Response;
 using DataAccessLayer.Abstract.CategoryRepository;
+using DataAccessLayer.UnitOfWorks;
 using EntityLayer.DTOs.CategoryDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +18,12 @@ namespace WebAPI.Controllers
     {
         private readonly ICategoryReadService _categoryReadService;
         private readonly ICategoryWriteService _categoryWriteService;
-        public CategoriesController(IMapper mapper, ICategoryReadRepository categoryReadRepository, ICategoryWriteRepository categoryWriteRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoriesController(IMapper mapper, ICategoryReadRepository categoryReadRepository, ICategoryWriteRepository categoryWriteRepository, IUnitOfWork unitOfWork)
         {
             _categoryReadService = new CategoryReadManager(mapper, categoryReadRepository);
             _categoryWriteService = new CategoryWriteManager(categoryWriteRepository, mapper);
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
@@ -40,7 +43,16 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Add(CategoryAddDto categoryAddDto)
         {
             ResponseDto<CategoryAddDto> result = await _categoryWriteService.AddCategory(categoryAddDto);
+            await _unitOfWork.CommitAsync();
             return Created("", result);
+        }
+
+        [HttpPut]
+        public IActionResult Update(CategoryUpdateDto categoryUpdateDto)
+        {
+            _categoryWriteService.Update(categoryUpdateDto);
+            _unitOfWork.Commit();
+            return NoContent();
         }
     }
 }

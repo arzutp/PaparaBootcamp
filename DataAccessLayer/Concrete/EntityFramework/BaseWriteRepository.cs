@@ -24,9 +24,9 @@ namespace DataAccessLayer.Concrete.EntityFramework
             return entity;
         }
 
-        public void Remove(T entity)
+        public void Remove(int id)
         {
-            _context.Remove(entity);           
+            _context.Remove(id);           
         }
 
         public void Update(T entity)

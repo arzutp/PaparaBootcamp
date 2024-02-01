@@ -37,12 +37,17 @@ namespace BusinessLayer.Concrete.CategoryManager
 
         public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            _categoryWriteRepository.Remove(id);
         }
 
         public void Update(CategoryUpdateDto categoryUpdateDto)
         {
-            throw new NotImplementedException();
+            var categoryUpdateRequest = _mapper.Map<Category>(categoryUpdateDto);
+            if(categoryUpdateRequest == null)
+            {
+                ResponseDto<CategoryUpdateDto>.Fail(Messages.UpdateFailMessage);
+            }
+            _categoryWriteRepository.Update(categoryUpdateRequest!);
         }
     }
 }
