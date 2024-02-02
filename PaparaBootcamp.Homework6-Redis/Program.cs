@@ -1,26 +1,16 @@
-using AutoMapper;
-using BusinessLayer.DIContainer;
-using BusinessLayer.Mapping;
-using DataAccessLayer.Contexts;
-using Microsoft.EntityFrameworkCore;
-using System;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//database connection
-builder.Services.AddDbContext<PaparaHomeworkDbContext>(options =>
+
+builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
+    options.Configuration = builder.Configuration.GetConnectionString("Redis");
 });
 
-builder.Services.DIContainerExt();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddAutoMapper(typeof(DtoProfile));
 
 var app = builder.Build();
 

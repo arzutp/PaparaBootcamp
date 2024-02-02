@@ -1,0 +1,6 @@
+@PaparaHomework.Redis_HostAddress = http://localhost:5137
+
+GET {{PaparaHomework.Redis_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
