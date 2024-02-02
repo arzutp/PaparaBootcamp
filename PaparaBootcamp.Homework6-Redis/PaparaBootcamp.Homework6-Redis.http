@@ -1,6 +1,0 @@
-@PaparaBootcamp.Homework6_Redis_HostAddress = http://localhost:5111
-
-GET {{PaparaBootcamp.Homework6_Redis_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
