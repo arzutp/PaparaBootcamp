@@ -9,6 +9,7 @@ using EntityLayer.DTOs.CategoryDTOs;
 using EntityLayer.DTOs.ProductDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace WebAPI.Controllers
 {
@@ -20,10 +21,10 @@ namespace WebAPI.Controllers
         private readonly IProductReadService _productReadService;
         private readonly IProductWriteService _productWriteService;
 
-        public ProductsController(IMapper mapper,IUnitOfWork unitOfWork, IProductReadRepository productReadRepository,IProductWriteRepository productWriteRepository)
+        public ProductsController(IMapper mapper,IUnitOfWork unitOfWork, IProductReadRepository productReadRepository,IProductWriteRepository productWriteRepository, IMemoryCache memoryCache)
         {
             _unitOfWork = unitOfWork;
-            _productReadService = new ProductReadManager(productReadRepository, mapper);
+            _productReadService = new ProductReadManager(productReadRepository, mapper, memoryCache);
             _productWriteService = new ProductWriteManager(productWriteRepository,mapper);
         }
 
@@ -72,9 +73,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("WithDefinition")]
-        public IActionResult GetWithDefinition()
+        public IActionResult GetWithDefinition(int id)
         {
-            var results = _productReadService.GetAllProductWithDefinition();
+            var results = _productReadService.GetAllProductWithDefinition(id);
             return Ok(results);
         }
     }

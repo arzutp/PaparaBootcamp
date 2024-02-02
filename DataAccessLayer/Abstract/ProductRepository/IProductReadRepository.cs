@@ -12,6 +12,6 @@ namespace DataAccessLayer.Abstract.ProductRepository
     public interface IProductReadRepository : IReadRepository<Product> 
     {
         List<ProductWithCategoryDto> GetAllProductWithCategory();
-        List<ProductWithDefinitionGetAllDto> GetAllProductWithDefinition();
+        List<ProductWithDefinitionGetAllDto> GetAllProductWithDefinition(int id);
     }
 }

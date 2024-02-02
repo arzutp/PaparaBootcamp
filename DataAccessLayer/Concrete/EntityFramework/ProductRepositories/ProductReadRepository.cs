@@ -35,9 +35,9 @@ namespace DataAccessLayer.Concrete.EntityFramework.ProductRepositories
             return products.ToList();
         }
 
-        public List<ProductWithDefinitionGetAllDto> GetAllProductWithDefinition()
+        public List<ProductWithDefinitionGetAllDto> GetAllProductWithDefinition(int id)
         {
-            var product = _context.Products.Find(2);
+            var product = _context.Products.Find(id);
             if (product == null)
             {
 

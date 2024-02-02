@@ -15,6 +15,6 @@ namespace BusinessLayer.Abstract.ProductServide
         List<ProductGetAllDto> GetAll();
         Task<ResponseDto<ProductGetByIdDto>> GetById(int id);
         List<ProductWithCategoryDto> GetAllProductsWithCategory();
-        List<ProductWithDefinitionGetAllDto> GetAllProductWithDefinition();
+        List<ProductWithDefinitionGetAllDto> GetAllProductWithDefinition(int id);
     }
 }
